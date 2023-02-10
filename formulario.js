@@ -1,26 +1,27 @@
-var formulario = document.querySelector("#form")
+var formulario = document.querySelector(".formulario")/* Se comodo a la clase en html y se uso el . en vez de # que es para id */
 
 formulario.onsubmit = function(e) {
+/* Se comento el prevent para asi mostrar eliminar  */
+  /* e.prevent(); */
+  /* Se adecuaron las variables para que tengan nombres significativos */
+  /* Se intento obtener el elemento por id */
+  var nombreRecibido = formulario.elements[0]
+  var edadRecibido = formulario.elements[1]
+  var nacionalidadRecibido = formulario.elements[2]
 
-  e.prevent();
-  
-  var n = formulario.elements[0]
-  var e = formulario.elements[1]
-  var na = formulario.elements[2]
+  var nombre = nombreRecibido.value
+  var edad = edadRecibido.value
 
-  var nombre = n.value
-  var edad = e.value
-
-  var i = na.selectedIndex
-  var nacionalidad = na.options[i].value
+  var i = nacionalidadRecibido.selectedIndex
+  var nacionalidad = nacionalidadRecibido.options[i].value
   console.log(nombre, edad)
   console.log(nacionalidad)
 
   if (nombre.length === 0) {
-    n.classList.add("error")
+    nombreRecibido.classList.add("error")
   }
   if (edad < 18 || edad > 120) {
-    e.classList.add("error")
+    edadRecibido.classList.add("error")
   }
 
 if (nombre.length > 0 
@@ -91,7 +92,7 @@ elementoLista.appendChild(corteLinea)
 elementoLista.appendChild(botonBorrar);
 
  botonBorrar.onclick = function() {
-// this.parentNode.style.display = 'none';
+this.parentNode.style.display = 'none';
 botonBorrar.parentNode.remove()
   }
 }
